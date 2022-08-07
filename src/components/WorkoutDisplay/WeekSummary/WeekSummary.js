@@ -1,6 +1,11 @@
-const WeekSummary = ({ weekNumber }) => {
+import styles from './WeekSummary.module.css'
+
+const WeekSummary = ({ weekNumber, weekDistance }) => {
     return (
-        <p>Week {weekNumber}</p>
+        <div className={styles.weekSummary}>
+            <p className={styles.weekNumber}>Week {weekNumber}</p>
+            <p className={styles.weekDistance}>{weekDistance}</p>
+        </div>
     )
 }
 

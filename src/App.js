@@ -1,28 +1,44 @@
-import { useState } from 'react'
-import './App.css';
-import DateControl from './components/DateControl';
-import PlanSelect from './components/PlanSelect';
-import WorkoutDisplay from './components/WorkoutDisplay';
-
-import { availablePlans } from './ch/plans';
+import { useState, useEffect } from "react";
+import { format } from "date-fns";
+import "./App.css";
+import InputArea from "./components/InputArea";
+import WorkoutDisplay from "./components/WorkoutDisplay";
+import { availablePlans } from "./utilities/plans";
+import { buildPlan } from "./utilities/planBuilder";
 
 const App = () => {
-  const [selectedPlan, setSelectedPlan] = useState(null)
+  const [selectedPlan, setSelectedPlan] = useState(null);
+  const [endDate, setEndDate] = useState(format(new Date(), "yyyy-MM-dd"));
+  const [builtPlan, setBuiltPlan] = useState(null)
+
+  const handleDateChange = (e) => {
+    setEndDate(e.target.value);
+  };
 
   const handlePlanChange = async (planUrl) => {
-    const res = await fetch(planUrl)
-    const result = await res.json()
-    setSelectedPlan({...result, weekCount: result.schedule.length})
-  }
+    const res = await fetch(planUrl);
+    const result = await res.json();
+    setSelectedPlan(result);
+  };
+
+  useEffect(() => {
+    if (selectedPlan) {
+      const plan = buildPlan(selectedPlan, endDate);
+      setBuiltPlan(plan)
+    }
+  }, [selectedPlan, endDate]);
 
   return (
     <div className="App">
-      <PlanSelect availablePlans={availablePlans} handlePlanChange={handlePlanChange}/>
-      ending on
-      <DateControl />
-      <WorkoutDisplay selectedPlan={selectedPlan}/>
+      <InputArea
+        availablePlans={availablePlans}
+        handlePlanChange={handlePlanChange}
+        handleDateChange={handleDateChange}
+        endDate={endDate}
+      />
+      <WorkoutDisplay builtPlan={builtPlan} />
     </div>
   );
-}
+};
 
 export default App;

@@ -1,14 +1,14 @@
 import WeekSummary from "./WeekSummary"
 import DaySummary from "./DaySummary"
 
-const WorkoutDisplay = ({ selectedPlan }) => {
+const WorkoutDisplay = ({ builtPlan }) => {
    
     return (
         <div>
-            {selectedPlan?.schedule.map((s, idx) => (
-                <div>
-                <WeekSummary weekNumber={idx + 1} />
-                {s.workouts.map((workout) => <DaySummary title={workout.title} />)}
+            {builtPlan?.schedule.map((week) => (
+                <div key={week.weekNumber}>
+                <WeekSummary weekNumber={week.weekNumber} weekDistance={week.weekDistance}/>
+                {week.workouts.map((w) => <DaySummary date={w.date} title={w.title} key={w.date}/>)}
                 </div>
             ))}
         </div>

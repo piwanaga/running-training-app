@@ -1,0 +1,7 @@
+.weekSummary {
+    display: flex;
+}
+
+.weekNumber {
+    font-size: 1.5rem;
+}
