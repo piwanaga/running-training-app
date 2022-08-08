@@ -1,3 +1,7 @@
 .inputArea {
     display: flex;
 }
+
+.ending {
+    margin: 0 1rem;
+}

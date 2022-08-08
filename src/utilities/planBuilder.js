@@ -5,12 +5,14 @@ export const buildPlan = (plan, endDate) => {
     endDate = parseISO(endDate)
     const startDate = calcStartDate(plan.schedule.length, endDate)
     
-    const schedule = setWorkoutDates(plan, startDate, endDate)
+    const schedule = setSchedule(plan, startDate, endDate)
+
+    const totalDistance = calcTotalDistance(schedule)
     
-    return {...plan, startDate, endDate, schedule}
+    return {...plan, startDate, endDate, totalDistance, schedule}
 }
 
-const setWorkoutDates = (plan, start, end) => {
+const setSchedule = (plan, start, end) => {
     const schedule = []
     const dates = getWorkoutDates(start, end)
 
@@ -28,4 +30,12 @@ const setWorkoutDates = (plan, start, end) => {
     }
 
     return schedule
+}
+
+const calcTotalDistance = (schedule) => {
+    const distance = schedule.reduce((sum, week) => {
+        return sum + week.weekDistance
+    }, 0)
+
+    return distance.toFixed(1)
 }

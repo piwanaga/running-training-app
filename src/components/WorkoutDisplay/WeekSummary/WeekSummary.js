@@ -2,9 +2,9 @@ import styles from './WeekSummary.module.css'
 
 const WeekSummary = ({ weekNumber, weekDistance }) => {
     return (
-        <div className={styles.weekSummary}>
-            <p className={styles.weekNumber}>Week {weekNumber}</p>
-            <p className={styles.weekDistance}>{weekDistance}</p>
+        <div className={styles.summary}>
+            <h5 className={styles.number}>Week {weekNumber}</h5>
+            <p className={styles.distance}>Distance: {weekDistance}</p>
         </div>
     )
 }

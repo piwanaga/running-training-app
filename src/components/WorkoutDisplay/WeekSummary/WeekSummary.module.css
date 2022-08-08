@@ -1,7 +1,12 @@
-.weekSummary {
+.summary {
     display: flex;
+    align-items: baseline;
 }
 
-.weekNumber {
+.number {
     font-size: 1.5rem;
+}
+
+.distance {
+    margin-left: 1rem;
 }

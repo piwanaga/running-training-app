@@ -9,7 +9,7 @@ const InputArea = ({ availablePlans, handlePlanChange, handleDateChange, endDate
         availablePlans={availablePlans}
         handlePlanChange={handlePlanChange}
       />
-      ending on
+      <p className={styles.ending}>ending on</p>
       <DateControl handleDateChange={handleDateChange} endDate={endDate}/>
     </div>
   );
