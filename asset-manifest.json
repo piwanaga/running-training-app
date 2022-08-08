@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/running-training-app/static/css/main.4df17816.css",
+    "main.js": "/running-training-app/static/js/main.b2d79cb4.js",
+    "static/js/787.9b9ac3f6.chunk.js": "/running-training-app/static/js/787.9b9ac3f6.chunk.js",
+    "index.html": "/running-training-app/index.html",
+    "main.4df17816.css.map": "/running-training-app/static/css/main.4df17816.css.map",
+    "main.b2d79cb4.js.map": "/running-training-app/static/js/main.b2d79cb4.js.map",
+    "787.9b9ac3f6.chunk.js.map": "/running-training-app/static/js/787.9b9ac3f6.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.4df17816.css",
+    "static/js/main.b2d79cb4.js"
+  ]
+}
